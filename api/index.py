@@ -1,11 +1,12 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
+from duckduckgo_search import ddg
 
 app = Flask(__name__)
 
 
 @app.route('/search', methods=['GET', 'POST'])
 def hello_world():  # put application's code here
-    from duckduckgo_search import ddg
+   
 
     if request.method == 'POST':
         keywords = request.form.get('q')
