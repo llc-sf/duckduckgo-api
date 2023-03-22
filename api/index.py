@@ -7,9 +7,14 @@ app = Flask(__name__)
 def hello_world():  # put application's code here
     from duckduckgo_search import ddg
 
-    keywords = request.args.get('q')
-    print(request.args.get('max_results'))
-    max_results = int(request.args.get('max_results') or "3")
+    if request.method == 'POST':
+        keywords = request.form.get('q')
+        max_results = int(request.form.get('max_results') or "3")
+    else:
+        keywords = request.args.get('q')
+        max_results = int(request.args.get('max_results') or "3")
+
+    
     results = ddg(keywords, region='wt-wt', max_results=max_results)
     print(results)
     return results
