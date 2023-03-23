@@ -20,7 +20,7 @@ def hello_world():  # put application's code here
     print(results)
     return results
 
-@app.route('/test', methods=['GET', 'POST'])
+@app.route('/test', methods=['POST'])
 def search():
     if request.method == 'POST':
         keywords = request.form.get('q')
